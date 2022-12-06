@@ -1,4 +1,5 @@
 import whisper
+from whisper import load_model
 import streamlit as st
 
 st.title("Whisper App")
