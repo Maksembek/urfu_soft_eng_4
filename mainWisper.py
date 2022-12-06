@@ -13,10 +13,11 @@ st.text("Play Original Audio File")
 st.audio(audio_file)
 
 if st.button("Transcribe Audio"):
-    if audio_file is not None:
-        st.success("Transcribing Audio")
-        transcription = model.transcribe(audio_file.name, fp16=False, language='ru')
-        st.success("Transcription Complete")
-        st.markdown(transcription["text"])
-    else:
+    if audio_file is None:
         st.error("Please upload an audio file")
+        exit(1)
+
+    st.success("Transcribing Audio")
+    transcription = model.transcribe(audio_file.name, fp16=False, language='ru')
+    st.success("Transcription Complete")
+    st.markdown(transcription["text"])
